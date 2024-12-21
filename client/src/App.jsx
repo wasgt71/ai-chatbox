@@ -39,7 +39,6 @@ const App = () => {
     setData(products);
   };
 
-
   useEffect(() => {
     handleData();
   }, []);
@@ -48,19 +47,36 @@ const App = () => {
     if (chatBox.current) {
       chatBox.current.scrollTop = chatBox.current.scrollHeight;
     }
-  }, [messages])
+  }, [messages]);
 
   return (
     <>
-    
-      <div className="chat-box" ref={chatBox}>
-        {messages.map((msg, index) => (
-          <Message key={index} sender={msg.sender} text={msg.text} />
-        ))}
-        {isLoading && <div className="loading">Cheryl is typing...</div>}
-      </div>
-      <div className="input-box">
-      <UserInput onSendMessage={handleUserMessage} />
+      <div className="app">
+        <div className="chat-box" ref={chatBox}>
+          {messages.map((msg, index) => (
+            <>
+              {msg.sender === "Nuusero-ai" && (
+                <>
+                  <div className="ai-message">
+                    <img className="logo" src="./public/logo.png"></img> <p className="name"><b>Christa</b></p>
+                      <Message
+                        key={index}
+                        sender={msg.sender}
+                        text={msg.text}
+                      />
+                    
+                  </div>
+                </>
+              )}
+              {msg.sender !== "Nuusero-ai" && (
+                <Message key={index} sender={msg.sender} text={msg.text} />
+              )}
+            </>
+          ))}
+          {isLoading && <div className="loading">Cheryl is typing...</div>}
+        </div>
+
+        <UserInput onSendMessage={handleUserMessage} />
       </div>
     </>
   );
