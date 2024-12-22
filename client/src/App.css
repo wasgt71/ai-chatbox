@@ -1,6 +1,5 @@
 #root {
   text-align: center;
-  width: 100%;
 }
 
 .chat-box {
@@ -13,9 +12,9 @@
   padding: 10px;
   box-sizing: border-box;
   margin: auto;
-  position: relative;
   z-index: 1;
   background-color: white;
+  word-wrap: break-word;
 }
 
 .text-input {
@@ -26,7 +25,7 @@
   max-height: 50px;
   box-sizing: border-box;
   border: 1px solid grey;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 15px;
 }
 
@@ -46,53 +45,78 @@
   height: 200px;
   max-height: 50px;
   background: black;
-  color: white; 
+  color: white;
   margin-left: 3px;
   margin-top: 7px;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  cursor: pointer;
 }
 
 .send-button:hover {
-  transform: scale(1.02)
+  transform: scale(1.02);
 }
 
 .user-input {
   max-width: 500px;
   margin: auto;
-  
-}
-
-.text {
-  margin-bottom: 10px;
-  border: 0.1px solid grey;
-  border-radius: 2px;
-  max-width: 80%;
-  background: rgb(238, 220, 117, 0.5);
-  display: flex;
-  align-items: left;
-  justify-content: left;
-  text-align: left;
-  
 }
 
 .logo {
   max-width: 35px;
-  position: absolute;
+  position: relative;
+  top: 57px;
+  max-height: 35px;
   
- 
-
 }
 
 .ai-message {
-text-align: left;
+  text-align: left;
+}
 
+.user-message {
+  text-align: left;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
 }
 
 .name {
- padding-top: 11px;
-  margin-left: 9%;
+  padding-top: 12px;
+  margin-left: 38px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  
 }
 
-.paragraph {
-  margin-left: 10%;
+.Nuusero-ai {
+  display: inline-block;
+  margin: 0;
+  padding: 1%;
+  border-radius: 2px;
+  align-self: flex-end;
+  max-width: 50%;
+  background-color: rgb(249, 233, 181);
+  border: 1px solid transparent;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 15px;
+  text-align: left;
+}
+
+.user {
+  display: inline-block;
+  margin: 0;
+  padding: 1%;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  align-self: flex-end;
+  max-width: 50%;
+  background-color: rgb(220, 220, 220);
+  color: black;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.loading {
+display: flex; 
+font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  
 }
