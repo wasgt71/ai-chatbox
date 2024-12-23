@@ -3,7 +3,7 @@
 }
 
 .chat-box {
-  border: 1px solid grey;
+  /*border: 1px solid grey;
   box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.1);
   /*border-image: linear-gradient(#e3c30e, #d0b030) 1;*/
   max-width: 500px;
@@ -120,3 +120,51 @@ display: flex;
 font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   
 }
+
+.app {
+  background-color: white;
+  padding: 20px;
+  margin: auto;
+  max-width: 500px;
+  box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+
+.close-app {
+  font-size: 20px;
+  background-color: white;
+  border-radius: 3px;
+  color: black;
+  opacity: 0.8;
+  border: 1px solid transparent;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  cursor: pointer;
+  display: inline-block;
+  align-self: flex-end;
+  position: relative;
+  right: 47%;
+  
+  border-right: 5px double black;
+  border-bottom: 5px double black;
+  
+}
+
+.close-app:hover {
+  transform: scale(1.03);
+}
+
+.open-app {
+  background-color: black;
+  color: white;
+  border: 1px solid transparent;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  opacity: 0.9;
+  cursor: pointer;
+  position: relative;
+  top: 650px;
+  left: 250px;
+}
+
