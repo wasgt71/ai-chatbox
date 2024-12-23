@@ -9,6 +9,7 @@ const App = () => {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
+  const [lock, setLock] = useState(false)
 
   const chatBox = useRef(null);
 
@@ -51,33 +52,40 @@ const App = () => {
 
   return (
     <>
-      <div className="app">
+    {!lock && <button className="open-app" onClick={(e) => setLock(true)}>CHAT NOW</button>}
+    {lock && (
+        <>
+        <div className="app">
+        <button className="close-app" onClick={(e) => setLock(false)}>X</button>
         <div className="chat-box" ref={chatBox}>
+    
           {messages.map((msg, index) => (
             <>
               {msg.sender === "Nuusero-ai" && (
                 <>
                   <div className="ai-message">
-                    <img className="logo" src="./public/logo.png"></img> <p className="name"><b>Christa</b></p>
-                      <Message
-                        key={index}
-                        sender={msg.sender}
-                        text={msg.text}
-                      />
-                    
+                    <img className="logo" src="./logo.png"></img>{" "}
+                    <p className="name">
+                      Christa
+                    </p>
+                    <Message key={index} sender={msg.sender} text={msg.text} />
                   </div>
                 </>
               )}
-              {msg.sender !== "Nuusero-ai" && (
-                <Message key={index} sender={msg.sender} text={msg.text} />
-              )}
+              <div className="user-message">
+                {msg.sender !== "Nuusero-ai" && (
+                  <Message key={index} sender={msg.sender} text={msg.text} />
+                )}
+              </div>
             </>
           ))}
-          {isLoading && <div className="loading">Cheryl is typing...</div>}
+          {isLoading && <div className="loading">Christa is typing...</div>}
         </div>
 
         <UserInput onSendMessage={handleUserMessage} />
       </div>
+      </>
+    )}
     </>
   );
 };
