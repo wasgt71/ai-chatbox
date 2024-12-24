@@ -167,14 +167,20 @@ font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   align-self: flex-end;
   position: relative;
   right: 47%;
-  
   border-right: 5px double black;
   border-bottom: 5px double black;
-  
 }
 
 .close-app:hover {
   transform: scale(1.03);
+}
+
+@media(max-width: 300px){
+  .close-app {
+    font-size: 15px;
+   border-right: 3px double black;
+   border-bottom: 3px double black;
+  }
 }
 
 .open-app {
