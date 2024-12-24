@@ -1,11 +1,8 @@
-import React from 'react';
+import React from "react";
+import "../App.css";
 
 const Message = ({ sender, text }) => {
-  return (
-    <div className={`message ${sender}`}>
-      <p>{text}</p>
-    </div>
-  );
+  return <p className={sender}>{text}</p>;
 };
 
 export default Message;

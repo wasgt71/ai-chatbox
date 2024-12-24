@@ -9,7 +9,7 @@ const App = () => {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
-  const [lock, setLock] = useState(false)
+  const [lock, setLock] = useState(false);
 
   const chatBox = useRef(null);
 
@@ -19,6 +19,7 @@ const App = () => {
     setIsLoading(true);
 
     try {
+      console.log(data);
       const response = await axios.post("http://localhost:3000/chat", {
         message,
         data,
@@ -33,11 +34,24 @@ const App = () => {
     }
   };
 
+  const policyUrl = [
+    "https://2616e3-9d.myshopify.com/88170922298/policies/39613530426",
+    "https://2616e3-9d.myshopify.com/88170922298/policies/39613956410",
+    "https://2616e3-9d.myshopify.com/88170922298/policies/39613792570",
+  ];
+
   const handleData = async () => {
     const response = await axios.post("http://localhost:3000/shopify", {});
-    const products = response.data.products.map((product) => product.title);
-    console.log(response);
-    setData(products);
+    const products = response.data.data.products.map(
+      (product) => product.title
+    );
+
+    /*const products = response.data.data.map((product) => product.title);*/
+    const store = response.data.home;
+
+    setData([store, products]);
+
+    
   };
 
   useEffect(() => {
@@ -52,40 +66,51 @@ const App = () => {
 
   return (
     <>
-    {!lock && <button className="open-app" onClick={(e) => setLock(true)}>CHAT NOW</button>}
-    {lock && (
+      {!lock && (
+        <button className="open-app" onClick={(e) => setLock(true)}>
+          CHAT NOW
+        </button>
+      )}
+      {lock && (
         <>
-        <div className="app">
-        <button className="close-app" onClick={(e) => setLock(false)}>X</button>
-        <div className="chat-box" ref={chatBox}>
-    
-          {messages.map((msg, index) => (
-            <>
-              {msg.sender === "Nuusero-ai" && (
+          <div className="app">
+            <button className="close-app" onClick={(e) => setLock(false)}>
+              X
+            </button>
+            <div className="chat-box" ref={chatBox}>
+              {messages.map((msg, index) => (
                 <>
-                  <div className="ai-message">
-                    <img className="logo" src="./logo.png"></img>{" "}
-                    <p className="name">
-                      Christa
-                    </p>
-                    <Message key={index} sender={msg.sender} text={msg.text} />
+                  {msg.sender === "Nuusero-ai" && (
+                    <>
+                      <div className="ai-message">
+                        <img className="logo" src="./logo.png"></img>{" "}
+                        <p className="name">Christa</p>
+                        <Message
+                          key={index}
+                          sender={msg.sender}
+                          text={msg.text}
+                        />
+                      </div>
+                    </>
+                  )}
+                  <div className="user-message">
+                    {msg.sender !== "Nuusero-ai" && (
+                      <Message
+                        key={index}
+                        sender={msg.sender}
+                        text={msg.text}
+                      />
+                    )}
                   </div>
                 </>
-              )}
-              <div className="user-message">
-                {msg.sender !== "Nuusero-ai" && (
-                  <Message key={index} sender={msg.sender} text={msg.text} />
-                )}
-              </div>
-            </>
-          ))}
-          {isLoading && <div className="loading">Christa is typing...</div>}
-        </div>
+              ))}
+              {isLoading && <div className="loading">Christa is typing...</div>}
+            </div>
 
-        <UserInput onSendMessage={handleUserMessage} />
-      </div>
-      </>
-    )}
+            <UserInput onSendMessage={handleUserMessage} />
+          </div>
+        </>
+      )}
     </>
   );
 };

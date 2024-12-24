@@ -17,6 +17,12 @@
   word-wrap: break-word;
 }
 
+@media(max-width: 499px) {
+  .chat-box {
+    height: 300px;
+  }
+}
+
 .text-input {
   margin-top: 7px;
   width: 100%;
@@ -100,6 +106,24 @@
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 15px;
   text-align: left;
+}
+
+@media(max-width: 300px) {
+  .Nuusero-ai {
+    font-size: 12px;
+  }
+  .user {
+    font-size: 12px;
+  }
+  .logo {
+  width: 25px;
+  }
+  .name {
+    font-size: 13px;
+    position: relative;
+    top: 7px;
+    right: 7px;
+  }
 }
 
 .user {
