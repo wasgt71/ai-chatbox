@@ -50,9 +50,12 @@ const App = () => {
     const store = response.data.home;
 
     setData([store, products]);
-
-    
   };
+
+  const openApp = async () => {
+    setLock(true);
+    await handleUserMessage("Hey");
+  }
 
   useEffect(() => {
     handleData();
@@ -67,7 +70,7 @@ const App = () => {
   return (
     <>
       {!lock && (
-        <button className="open-app" onClick={(e) => setLock(true)}>
+        <button className="open-app" onClick={openApp}>
           CHAT NOW
         </button>
       )}
